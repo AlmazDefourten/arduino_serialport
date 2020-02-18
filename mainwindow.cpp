@@ -18,7 +18,6 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_clicked()
 {
-    int deb = ui->lineEdit->text().toInt();
     QSerialPort serial;
     serial.setPortName("COM4");
     serial.setBaudRate(9600);
@@ -28,6 +27,6 @@ void MainWindow::on_pushButton_clicked()
     serial.setFlowControl(QSerialPort::NoFlowControl);
     if (serial.open(QSerialPort::ReadWrite))
     {
-        serial.write("deb");
+        serial.write("1");
     }
 }
