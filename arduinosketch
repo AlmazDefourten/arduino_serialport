@@ -23,7 +23,7 @@ int valX;
          servo1.attach(4);      
 
    }    
-
+//d
    void loop () {
 int kover = Serial.read();
 servo1.write(kover);
