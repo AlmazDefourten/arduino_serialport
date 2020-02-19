@@ -2,7 +2,8 @@
 #include "ui_mainwindow.h"
 #include <QSerialPort>
 #include <QSerialPortInfo>
-
+#include <iostream>
+#include <QDebug>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -14,19 +15,25 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
-
+QSerialPort serial;
 
 void MainWindow::on_pushButton_clicked()
 {
-    QSerialPort serial;
+    serial.open(QIODevice::ReadWrite);
+    serial.setBaudRate(QSerialPort::Baud9600);
     serial.setPortName("COM4");
-    serial.setBaudRate(9600);
-    serial.setDataBits(QSerialPort::Data8);
-    serial.setParity(QSerialPort::NoParity);
-    serial.setStopBits(QSerialPort::OneStop);
-    serial.setFlowControl(QSerialPort::NoFlowControl);
-    if (serial.open(QSerialPort::ReadWrite))
-    {
-        serial.write("1");
-    }
+    if (serial.isOpen() && serial.isWritable())
+                {
+
+                    QByteArray ba("b");
+
+                    serial.write(ba);
+                        serial.waitForBytesWritten();
+ serial.flush();
+
+                    qDebug() << "data has been send" << endl;
+                    serial.close();
+                }
+    else
+       qDebug() << "ee";
 }
