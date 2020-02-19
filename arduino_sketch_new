@@ -1,0 +1,34 @@
+   // пин подключения контакта VRX
+
+   #define PIN_VRX A0
+
+   // пин подключения контакта VRY
+
+   #define PIN_VRY A1
+
+   // пин подключения кнопки
+
+   #define PIN_BUTTON 3
+
+#include <Servo.h> // подключаем библиотеку для работы с сервоприводом
+
+Servo servo1; 
+int num = 0;
+void setup() {
+  Serial.begin(9600);
+  servo1.attach(4);
+   Serial.available();
+}
+
+void loop() {
+ 
+    char a = Serial.read();
+
+    if (Serial.read() == 'b') {
+      servo1.write(num);
+      Serial.print("Blue is on");
+      delay(1000);
+      num = num + 45;
+    }
+}    
+
