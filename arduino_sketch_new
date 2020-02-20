@@ -10,16 +10,18 @@ void setup() {
 }
 void loop()
 { 
+
     InChar = (char)Serial.read();
  while (Serial.available())
  {
+InChar = (char)Serial.read();
 
 
   if(InChar == '2')
   {
    
-    
-    servo1.write(24);
+
+    servo1.write(45);
 
     
   }  
@@ -27,7 +29,7 @@ void loop()
 if(InChar == '1')
 {
 
-    servo1.write(76);
+    servo1.write(90);
 
     
 }
