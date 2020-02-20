@@ -25,11 +25,12 @@ void MainWindow::on_pushButton_clicked()
     if (serial.isOpen() && serial.isWritable())
                 {
 
-                    QByteArray ba("2");
+                    QByteArray ba;
+                    ba[0] = '2';
 
 
-                    serial.write(ba);
-                        serial.waitForBytesWritten();
+                    serial.write(ba, 100);
+ serial.waitForBytesWritten();
  serial.flush();
 QByteArray arg("d");
                     qDebug() << "data has been send" << endl;
@@ -49,10 +50,11 @@ void MainWindow::on_pushButton_2_clicked()
     if (serial.isOpen() && serial.isWritable())
                 {
 
-                    QByteArray ba("1");
+                    QByteArray ba;
+                    ba[0] = '1';
 
-                    serial.write(ba);
-                        serial.waitForBytesWritten();
+                    serial.write(ba, 100);
+ serial.waitForBytesWritten();
  serial.flush();
 QByteArray arg("d");
                     qDebug() << "data has been send" << endl;
