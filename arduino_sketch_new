@@ -21,7 +21,7 @@ InChar = (char)Serial.read();
   {
    
 
-    servo1.write(45);
+    servo1.write(45); // 45 градусов
 
     
   }  
